@@ -11,9 +11,13 @@ const UserList: React.FC = () => {
     <div>
       <h1>Random Users</h1>
       <ul>
-        {data.data.map((user: any) => (
-          <li key={user.length}>
-            <p>{user.fact}</p>
+        {data.results.map((user: any) => (
+          <li key={user.login.uuid}>
+            <img src={user.picture.thumbnail} />
+            <p>
+              {user.name.first} ${user.name.last}
+            </p>
+            <p>{user.email}</p>
           </li>
         ))}
       </ul>
