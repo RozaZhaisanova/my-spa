@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetUsersQuery } from "./store/apiSlice";
+import { useGetUsersQuery } from "../store/apiSlice";
 import { FaHeart } from "react-icons/fa";
 
 const UserList: React.FC = () => {

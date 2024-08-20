@@ -1,11 +1,11 @@
 // src/App.tsx
 import React from "react";
-import UserList from "./UserList";
+import CardList from "./components/CardList";
 
 const App: React.FC = () => {
   return (
     <div>
-      <UserList />
+      <CardList />
     </div>
   );
 };
