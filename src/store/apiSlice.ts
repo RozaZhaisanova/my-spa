@@ -2,12 +2,12 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://numbersapi.com/" }), // Замените на нужный API
+  baseQuery: fetchBaseQuery({ baseUrl: "https://randomuser.me/api/" }),
   endpoints: (builder) => ({
-    getItems: builder.query<any[], void>({
-      query: () => "/items", // Замените на нужный эндпоинт
+    getUsers: builder.query<any, void>({
+      query: () => "",
     }),
   }),
 });
 
-export const { useGetItemsQuery } = apiSlice;
+export const { useGetUsersQuery } = apiSlice;
