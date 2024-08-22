@@ -7,6 +7,7 @@ interface CardProps {
   email: string;
   onDelete: React.MouseEventHandler<HTMLButtonElement>;
   children?: ReactNode;
+  isLiked: boolean; // Состояние лайка
 }
 
 const Card: React.FC<CardProps> = ({
@@ -15,6 +16,7 @@ const Card: React.FC<CardProps> = ({
   email,
   onDelete,
   children,
+  isLiked,
 }) => {
   const [liked, setLiked] = useState(false);
   const toggleLike = () => {
