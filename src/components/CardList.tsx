@@ -51,6 +51,7 @@ const UserList: React.FC = () => {
               email={user.email}
               picture={user.picture.thumbnail}
               onDelete={() => handleDelete(user.login.uuid)}
+              onLike={() => handleLikeUser(user.login.uuid)}
               isLiked={likedUsers.has(user.login.uuid)}
             ></Card>
           </>
