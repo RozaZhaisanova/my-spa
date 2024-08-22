@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useGetUsersQuery } from "../store/apiSlice";
 import { FaHeart } from "react-icons/fa";
 import Card from "./Card";
 const UserList: React.FC = () => {
   const { data, error, isLoading } = useGetUsersQuery();
+  const [users, setUsers] = useState<any[]>([]);
+  useEffect(() => {
+    if (data && data.results) {
+      setUsers(data.results);
+    }
+  }, [data]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error fetching users.</div>;
@@ -12,7 +18,7 @@ const UserList: React.FC = () => {
     <div>
       <h1>Random Users</h1>
       <ul>
-        {data.results.map((user: any) => (
+        {users.map((user: any) => (
           <Card
             key={user.login.uuid}
             name={user.name.first}
