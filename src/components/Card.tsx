@@ -5,10 +5,17 @@ interface CardProps {
   name: string;
   picture: string;
   email: string;
+  onDelete: React.MouseEventHandler<HTMLButtonElement>;
   children?: ReactNode;
 }
 
-const Card: React.FC<CardProps> = ({ name, picture, email, children }) => {
+const Card: React.FC<CardProps> = ({
+  name,
+  picture,
+  email,
+  onDelete,
+  children,
+}) => {
   const [liked, setLiked] = useState(false);
   const toggleLike = () => {
     setLiked((prev) => !prev);
@@ -31,6 +38,9 @@ const Card: React.FC<CardProps> = ({ name, picture, email, children }) => {
       <p>{email.length > 15 ? `${email.slice(0, 15)}...` : email}</p>
       <button type="button" onClick={toggleLike}>
         <FaHeart color={liked ? "red" : "gray"} size={24} />
+      </button>
+      <button type="button" onClick={onDelete}>
+        🗑️delete
       </button>
     </div>
   );

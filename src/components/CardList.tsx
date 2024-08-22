@@ -28,10 +28,8 @@ const UserList: React.FC = () => {
               name={user.name.first}
               email={user.email}
               picture={user.picture.thumbnail}
+              onDelete={() => handleDelete(user.login.uuid)}
             ></Card>
-            <button type="button" onClick={() => handleDelete(user.login.uuid)}>
-              🗑️delete
-            </button>
           </>
         ))}
       </ul>
