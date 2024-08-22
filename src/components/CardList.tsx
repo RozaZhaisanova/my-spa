@@ -13,18 +13,26 @@ const UserList: React.FC = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error fetching users.</div>;
-
+  const handleDelete = (uuid: any) => {
+    setUsers(users.filter((user) => user.login.uuid !== uuid));
+  };
   return (
     <div>
       <h1>Random Users</h1>
       <ul>
         {users.map((user: any) => (
-          <Card
-            key={user.login.uuid}
-            name={user.name.first}
-            email={user.email}
-            picture={user.picture.thumbnail}
-          ></Card>
+          <>
+            {" "}
+            <Card
+              key={user.login.uuid}
+              name={user.name.first}
+              email={user.email}
+              picture={user.picture.thumbnail}
+            ></Card>
+            <button type="button" onClick={() => handleDelete(user.login.uuid)}>
+              🗑️delete
+            </button>
+          </>
         ))}
       </ul>
     </div>
