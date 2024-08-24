@@ -6,13 +6,14 @@ import { useGetUsersQuery } from "./store/apiSlice";
 const App: React.FC = () => {
   const { data, error, isLoading } = useGetUsersQuery();
   const [users, setUsers] = useState<any[]>([]);
-  const [likedUsers, setLikedUsers] = useState<Set<string>>(new Set());
-  const [showLikedOnly, setShowLikedOnly] = useState(false);
+
   useEffect(() => {
     if (data && data.results) {
       setUsers(data.results);
     }
   }, [data]);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error fetching users.</div>;
   return (
     <BrowserRouter>
       <Routes>

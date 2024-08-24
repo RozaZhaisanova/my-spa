@@ -1,6 +1,6 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import { FaHeart } from "react-icons/fa";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface CardProps {
   index: number;
@@ -25,17 +25,10 @@ const Card: React.FC<CardProps> = ({
   isLiked,
   id,
 }) => {
-  const navigate = useNavigate();
-  const searchParams = useParams();
-
-  //  const handleCardClick = () => {
-  //  navigate(`user/${searchParams.toString()}`); // Перенаправляем на страницу пользователя
-  // };
   return (
     <>
       <Link key={index} to={`/card/${index}`}>
         <div
-          //      onClick={handleCardClick}
           style={{
             border: "1px solid #ccc",
             borderRadius: "8px",
@@ -50,14 +43,14 @@ const Card: React.FC<CardProps> = ({
           />
           <h3>{name}</h3>
           <p>{email.length > 15 ? `${email.slice(0, 15)}...` : email}</p>
-          <button type="button" onClick={onLike}>
-            <FaHeart color={isLiked ? "red" : "gray"} size={24} />
-          </button>
-          <button type="button" onClick={onDelete}>
-            🗑️delete
-          </button>
         </div>
       </Link>
+      <button type="button" onClick={onLike}>
+        <FaHeart color={isLiked ? "red" : "gray"} size={24} />
+      </button>
+      <button type="button" onClick={onDelete}>
+        🗑️delete
+      </button>
     </>
   );
 };

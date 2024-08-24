@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useGetUsersQuery } from "../store/apiSlice";
-import { FaHeart } from "react-icons/fa";
 import Card from "./Card";
 const UserList: React.FC = () => {
   const { data, error, isLoading } = useGetUsersQuery();
