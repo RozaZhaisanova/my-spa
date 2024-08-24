@@ -1,7 +1,8 @@
+import { Box, Image, Heading } from "grommet";
 import React, { ReactNode } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import style from "./Card.module.css";
 interface CardProps {
   index: number;
   name: string;
@@ -26,32 +27,19 @@ const Card: React.FC<CardProps> = ({
   id,
 }) => {
   return (
-    <>
-      <Link key={index} to={`/card/${index}`}>
-        <div
-          style={{
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            padding: "16px",
-            margin: "8px",
-          }}
-        >
-          <img
-            src={picture}
-            alt={name}
-            style={{ width: "10%", borderRadius: "8px" }}
-          />
-          <h3>{name}</h3>
-          <p>{email.length > 15 ? `${email.slice(0, 15)}...` : email}</p>
-        </div>
+    <Box>
+      <Link className={style.item} key={index} to={`/card/${index}`}>
+        <Image src={picture} alt={name} />
+        <Heading level={3}>{name}</Heading>
+        <Heading level={4}>
+          {email.length > 15 ? `${email.slice(0, 15)}...` : email}
+        </Heading>
       </Link>
       <button type="button" onClick={onLike}>
         <FaHeart color={isLiked ? "red" : "gray"} size={24} />
       </button>
-      <button type="button" onClick={onDelete}>
-        🗑️delete
-      </button>
-    </>
+      <button onClick={onDelete}>🗑️delete</button>
+    </Box>
   );
 };
 

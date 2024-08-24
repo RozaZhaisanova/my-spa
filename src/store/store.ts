@@ -1,4 +1,4 @@
-import { configureStore, PayloadAction } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./apiSlice";
 
 export const store = configureStore({

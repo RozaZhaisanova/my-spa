@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useGetUsersQuery } from "../store/apiSlice";
 import Card from "./Card";
-const UserList: React.FC = () => {
+import { Box, Button } from "grommet";
+const CardList: React.FC = () => {
   const { data, error, isLoading } = useGetUsersQuery();
   const [users, setUsers] = useState<any[]>([]);
   const [likedUsers, setLikedUsers] = useState<Set<string>>(new Set());
@@ -35,11 +36,11 @@ const UserList: React.FC = () => {
     ? users.filter((user) => likedUsers.has(user.login.uuid))
     : users;
   return (
-    <div>
+    <Box align={"center"}>
       <h1>Random Users</h1>
-      <button onClick={toggleShowLiked}>
+      <Button onClick={toggleShowLiked}>
         {showLikedOnly ? "Показать всех" : "Показать только залайканные"}
-      </button>
+      </Button>
       <ul>
         {displayedUsers.map((user: any, index: number) => (
           <>
@@ -57,8 +58,8 @@ const UserList: React.FC = () => {
           </>
         ))}
       </ul>
-    </div>
+    </Box>
   );
 };
 
-export default UserList;
+export default CardList;
