@@ -1,6 +1,6 @@
 import { Box, Image, Heading } from "grommet";
 import React, { ReactNode } from "react";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
 interface CardProps {
@@ -27,19 +27,25 @@ const Card: React.FC<CardProps> = ({
   id,
 }) => {
   return (
-    <Box>
-      <Link className={style.item} key={index} to={`/card/${index}`}>
-        <Image src={picture} alt={name} />
-        <Heading level={3}>{name}</Heading>
-        <Heading level={4}>
-          {email.length > 15 ? `${email.slice(0, 15)}...` : email}
-        </Heading>
-      </Link>
-      <button type="button" onClick={onLike}>
-        <FaHeart color={isLiked ? "red" : "gray"} size={24} />
-      </button>
-      <button onClick={onDelete}>🗑️delete</button>
-    </Box>
+    <>
+      <Box direction="column" pad="large">
+        <Link className={style.item} key={index} to={`/card/${index}`}>
+          <Image fit="cover" src={picture} alt={name} />
+          <Heading level={3}>{name}</Heading>
+          <Heading level={4}>{email}</Heading>
+        </Link>
+        <Box direction="row">
+          <button className={style.button} type="button" onClick={onLike}>
+            <FaHeart color={isLiked ? "red" : "gray"} size={24} />
+          </button>
+          {"\u00A0"}
+          <button className={style.button} onClick={onDelete}>
+            <FaTrash />
+          </button>
+        </Box>
+      </Box>
+      {"\t"}
+    </>
   );
 };
 

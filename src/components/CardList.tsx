@@ -38,9 +38,13 @@ const CardList: React.FC = () => {
   return (
     <Box align={"center"}>
       <h1>Random Users</h1>
-      <Button onClick={toggleShowLiked}>
-        {showLikedOnly ? "Показать всех" : "Показать только залайканные"}
-      </Button>
+      <Button
+        color="#015965"
+        size="medium"
+        label={showLikedOnly ? "Показать всех" : "Показать только залайканные"}
+        primary
+        onClick={toggleShowLiked}
+      ></Button>
       <ul>
         {displayedUsers.map((user: any, index: number) => (
           <>
@@ -49,7 +53,7 @@ const CardList: React.FC = () => {
               key={user.login.uuid}
               name={user.name.first}
               email={user.email}
-              picture={user.picture.thumbnail}
+              picture={user.picture.large}
               onDelete={() => handleDelete(user.login.uuid)}
               onLike={() => handleLikeUser(user.login.uuid)}
               isLiked={likedUsers.has(user.login.uuid)}
