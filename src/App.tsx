@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardList from "./components/CardList";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import CardDetail from "./pages/CardDetail";
 import { useGetUsersQuery } from "./store/apiSlice";
 const App: React.FC = () => {
@@ -15,12 +15,12 @@ const App: React.FC = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error fetching users.</div>;
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<CardList />} />
         <Route path="/card/:id" element={<CardDetail users={users} />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
