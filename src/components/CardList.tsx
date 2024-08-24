@@ -42,10 +42,10 @@ const UserList: React.FC = () => {
         {showLikedOnly ? "Показать всех" : "Показать только залайканные"}
       </button>
       <ul>
-        {displayedUsers.map((user: any) => (
+        {displayedUsers.map((user: any, index: number) => (
           <>
-            {" "}
             <Card
+              index={index}
               key={user.login.uuid}
               name={user.name.first}
               email={user.email}
@@ -53,6 +53,7 @@ const UserList: React.FC = () => {
               onDelete={() => handleDelete(user.login.uuid)}
               onLike={() => handleLikeUser(user.login.uuid)}
               isLiked={likedUsers.has(user.login.uuid)}
+              id={user.login.uuid}
             ></Card>
           </>
         ))}
