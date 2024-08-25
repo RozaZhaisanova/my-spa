@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.21d488a0.css","mappings":"AAAA,kBACI,uBAAyB,CACzB,oBACF,CACA,oBAAQ,WAAW,CAAC,WAAW","sources":["components/Card.module.css"],"sourcesContent":[".item {\r\n    color: #015965 !important;\r\n    text-decoration: none;\r\n  }\r\n  .button{height:30px;width:100px}"],"names":[],"sourceRoot":""}
